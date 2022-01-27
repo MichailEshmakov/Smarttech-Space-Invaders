@@ -17,9 +17,23 @@ public class Enemy : MonoBehaviour
             _weapon = GetComponent<Weapon>();
     }
 
+    private void OnEnable()
+    {
+        _weapon.ToFirePrepared += OnWeaponPrepared;
+    }
+
+    private void OnDisable()
+    {
+        _weapon.ToFirePrepared -= OnWeaponPrepared;
+    }
+
+    private void OnWeaponPrepared()
+    {
+        _weapon.TryFire();
+    }
+
     private void Update()
     {
         _mover.Move(Vector2.down);
-        _weapon.TryFire();
     }
 }
