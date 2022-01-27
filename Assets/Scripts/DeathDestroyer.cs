@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeathDeactivator : MonoBehaviour
+public class DeathDestroyer : MonoBehaviour
 {
     [SerializeField] private Health _health;
 
@@ -24,6 +24,6 @@ public class DeathDeactivator : MonoBehaviour
 
     private void OnDead()
     {
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

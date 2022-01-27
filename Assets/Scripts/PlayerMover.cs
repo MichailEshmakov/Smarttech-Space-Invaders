@@ -2,24 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private Mover _mover;
-    [SerializeField] private Weapon _weapon;
+    [SerializeField] private InputListener _input;
 
     private void OnValidate()
     {
         if (_mover == null)
             _mover = GetComponent<Mover>();
 
-
-        if (_weapon == null)
-            _weapon = GetComponent<Weapon>();
+        if (_input == null)
+            _input = GetComponent<InputListener>();
     }
 
     private void Update()
     {
-        _mover.Move(Vector2.down);
-        _weapon.TryFire();
+        _mover.Move(_input.MovingDirection);
     }
 }
