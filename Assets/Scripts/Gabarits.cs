@@ -26,18 +26,46 @@ public class Gabarits : MonoBehaviour
 
     private void OnValidate()
     {
-        if (_leftExtremePoint != null && _rightExtremePoint != null)
+        if (IsAnyExtremePointNull() == false)
+        {
             CheckXSides();
-
-        if (_topExtremePoint != null && _bottomExtremePoint != null)
             CheckYSides();
+        }
     }
 
     private void Start()
     {
-        CheckXSides();
-        CheckYSides();
-        SetSizes();
+        if (IsAnyExtremePointNull() == false)
+        {
+            CheckXSides();
+            CheckYSides();
+            SetSizes();
+        }
+    }
+
+    public void Init(Transform leftExtremePoint, Transform rightExtremePoint, Transform topExtremePoint, Transform bottomExtremePoint)
+    {
+        _leftExtremePoint = leftExtremePoint;
+        _rightExtremePoint = rightExtremePoint;
+        _topExtremePoint = topExtremePoint;
+        _bottomExtremePoint = bottomExtremePoint;
+    }
+
+    public void Init(float leftExtremeCoordinate, float rightExtremeCoordinate, float topExtremeCoordinate, float bottomExtremeCoordinate)
+    {
+        Transform leftExtremePoint = Instantiate(new GameObject(nameof(leftExtremePoint)), 
+            new Vector2(leftExtremeCoordinate, transform.position.y), Quaternion.identity).transform;
+
+        Transform rightExtremePoint = Instantiate(new GameObject(nameof(rightExtremePoint)),
+            new Vector2(rightExtremeCoordinate, transform.position.y), Quaternion.identity).transform;
+
+        Transform topExtremePoint = Instantiate(new GameObject(nameof(topExtremePoint)),
+            new Vector2(transform.position.x, topExtremeCoordinate), Quaternion.identity).transform;
+
+        Transform bottomExtremePoint = Instantiate(new GameObject(nameof(bottomExtremePoint)),
+            new Vector2(transform.position.x, bottomExtremeCoordinate), Quaternion.identity).transform;
+
+        Init(leftExtremePoint, rightExtremePoint, topExtremePoint, bottomExtremePoint);
     }
 
     private void CheckXSides()
@@ -56,6 +84,14 @@ public class Gabarits : MonoBehaviour
             LogEggorOfWrongPosition(nameof(_topExtremePoint));
             LogEggorOfWrongPosition(nameof(_bottomExtremePoint));
         }
+    }
+
+    private bool IsAnyExtremePointNull()
+    {
+        return (_leftExtremePoint == null)
+            || (_rightExtremePoint == null)
+            || (_topExtremePoint == null)
+            || (_bottomExtremePoint == null);
     }
 
     private void LogEggorOfWrongPosition(string sideName)
