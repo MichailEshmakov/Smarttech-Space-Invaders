@@ -5,12 +5,11 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Mover))]
+[RequireComponent(typeof(EnemySubRowMover))]
 public class EnemySubRow : MonoBehaviour
 {
-    private Mover _mover;
+    private EnemySubRowMover _mover;
     private List<Enemy> _enemies;
-    private Vector2 _movingDirection;
     private Enemy _rightEnemy;
     private Enemy _leftEnemy;
 
@@ -27,11 +26,6 @@ public class EnemySubRow : MonoBehaviour
         UnsubscribeOnEnemies(_enemies);
     }
 
-    private void Update()
-    {
-        _mover.Move(_movingDirection);
-    }
-
     private void OnDestroy()
     {
         Destroyed?.Invoke(this);
@@ -39,10 +33,10 @@ public class EnemySubRow : MonoBehaviour
 
     public void Init(float speed, IReadOnlyList<Enemy> enemies, Vector2 movingDirection)
     {
-        _mover = GetComponent<Mover>();
-        _mover.SetSpeed(speed);
+        _mover = GetComponent<EnemySubRowMover>();
+        _mover.Init(speed, movingDirection);
         _enemies = new List<Enemy>(enemies);
-        _movingDirection = movingDirection;
+
         SubscribeOnEnemies(enemies);
 
         foreach (Enemy enemy in _enemies)
@@ -83,7 +77,7 @@ public class EnemySubRow : MonoBehaviour
     {
         IReadOnlyList<Enemy> leftEnemies = _enemies.GetRange(0, _enemies.IndexOf(deadEnemy));
 
-        Divided?.Invoke(leftEnemies, _movingDirection);
+        Divided?.Invoke(leftEnemies, _mover.MovingDirection);
         
         UnsubscribeOnEnemies(leftEnemies);
         UnsubscribeOnEnemy(deadEnemy);
@@ -113,7 +107,6 @@ public class EnemySubRow : MonoBehaviour
                 UnsubscribeOnEnemy(enemy);
             }
         }
-
     }
 
     private void SubscribeOnEnemies(IReadOnlyList<Enemy> enemies)
@@ -129,16 +122,11 @@ public class EnemySubRow : MonoBehaviour
 
     private void OnEnemiesCollided()
     {
-        ChangeDirection();
+        _mover.ChangeDirection();
     }
 
     private void OnEnemyBorderReached()
     {
-        ChangeDirection();
-    }
-
-    private void ChangeDirection()
-    {
-        _movingDirection *= -1;
+        _mover.ChangeDirection();
     }
 }
