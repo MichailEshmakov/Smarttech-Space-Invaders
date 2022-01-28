@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Mover))]
 [RequireComponent(typeof(Gabarits))]
@@ -15,12 +16,12 @@ public class EnemySubRow : MonoBehaviour
     private Enemy _rightEnemy;
     private Enemy _leftEnemy;
 
+    public event UnityAction<IReadOnlyList<Enemy>, Vector2> Divided;
+    public event UnityAction<EnemySubRow> Destroyed;
+
     private void OnEnable()
     {
-        foreach (Enemy enemy in _enemies)
-        {
-            SubscribeOnEnemy(enemy);
-        }
+        SubscribeOnEnemies(_enemies);
     }
 
     private void OnDisable()
@@ -31,6 +32,11 @@ public class EnemySubRow : MonoBehaviour
     private void Update()
     {
         _mover.Move(_movingDirection);
+    }
+
+    private void OnDestroy()
+    {
+        Destroyed?.Invoke(this);
     }
 
     public void Init(float speed, IReadOnlyList<Enemy> enemies, Vector2 movingDirection)
@@ -46,6 +52,11 @@ public class EnemySubRow : MonoBehaviour
         {
             enemy.transform.SetParent(transform);
         }
+    }
+
+    public void SetSpeed(float newSpeed)
+    {
+        _mover.SetSpeed(newSpeed);
     }
 
     private void OnEnemyDead(Enemy deadEnemy)
@@ -75,22 +86,13 @@ public class EnemySubRow : MonoBehaviour
 
     private void OnMiddleEnemyDead(Enemy deadEnemy)
     {
-        EnemySubRow leftSubRow = CreateEmptySubRow();
-        List<Enemy> leftEnemies = _enemies.TakeWhile(enemy => enemy != deadEnemy).ToList();
-        _enemies.GetRange(0, _enemies.IndexOf(deadEnemy));
-        leftSubRow.Init(_mover.Speed, leftEnemies, -_movingDirection);
+        IReadOnlyList<Enemy> leftEnemies = _enemies.GetRange(0, _enemies.IndexOf(deadEnemy));
+
+        Divided?.Invoke(leftEnemies, _movingDirection);
+        
         UnsubscribeOnEnemies(leftEnemies);
         UnsubscribeOnEnemy(deadEnemy);
-
         _enemies.RemoveRange(0, _enemies.IndexOf(deadEnemy) + 1);
-    }
-
-    private EnemySubRow CreateEmptySubRow()
-    {
-        EnemySubRow newSubRow = new GameObject().AddComponent<EnemySubRow>();// TODO: Убрать дубляж с EnemyRow
-        newSubRow.transform.parent = transform.parent;
-        newSubRow.transform.position = transform.position;
-        return newSubRow;
     }
 
     private void SubscribeOnEnemy(Enemy enemy)
@@ -109,17 +111,24 @@ public class EnemySubRow : MonoBehaviour
 
     private void UnsubscribeOnEnemies(IReadOnlyList<Enemy> enemies)
     {
-        foreach (Enemy enemy in enemies)
+        if (enemies != null)
         {
-            UnsubscribeOnEnemy(enemy);
+            foreach (Enemy enemy in enemies)
+            {
+                UnsubscribeOnEnemy(enemy);
+            }
         }
+
     }
 
     private void SubscribeOnEnemies(IReadOnlyList<Enemy> enemies)
     {
-        foreach (Enemy enemy in enemies)
+        if (enemies != null)
         {
-            SubscribeOnEnemy(enemy);
+            foreach (Enemy enemy in enemies)
+            {
+                SubscribeOnEnemy(enemy);
+            }
         }
     }
 
