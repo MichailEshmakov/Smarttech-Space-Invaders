@@ -53,19 +53,21 @@ public class Gabarits : MonoBehaviour
 
     public void Init(float leftExtremeCoordinate, float rightExtremeCoordinate, float topExtremeCoordinate, float bottomExtremeCoordinate)
     {
-        Transform leftExtremePoint = Instantiate(new GameObject(nameof(leftExtremePoint)), 
-            new Vector2(leftExtremeCoordinate, transform.position.y), Quaternion.identity).transform;
-
-        Transform rightExtremePoint = Instantiate(new GameObject(nameof(rightExtremePoint)),
-            new Vector2(rightExtremeCoordinate, transform.position.y), Quaternion.identity).transform;
-
-        Transform topExtremePoint = Instantiate(new GameObject(nameof(topExtremePoint)),
-            new Vector2(transform.position.x, topExtremeCoordinate), Quaternion.identity).transform;
-
-        Transform bottomExtremePoint = Instantiate(new GameObject(nameof(bottomExtremePoint)),
-            new Vector2(transform.position.x, bottomExtremeCoordinate), Quaternion.identity).transform;
+        Transform leftExtremePoint = CreateExtremePoint(nameof(leftExtremePoint), new Vector2(leftExtremeCoordinate, transform.position.y));
+        Transform rightExtremePoint = CreateExtremePoint(nameof(rightExtremePoint), new Vector2(rightExtremeCoordinate, transform.position.y));
+        Transform topExtremePoint = CreateExtremePoint(nameof(topExtremePoint), new Vector2(transform.position.x, topExtremeCoordinate));
+        Transform bottomExtremePoint = CreateExtremePoint(nameof(bottomExtremePoint), new Vector2(transform.position.x, bottomExtremeCoordinate));
 
         Init(leftExtremePoint, rightExtremePoint, topExtremePoint, bottomExtremePoint);
+    }
+
+    private Transform CreateExtremePoint(string name, Vector2 position)
+    {
+        Transform newPoint = new GameObject(name).transform;
+        newPoint.SetParent(transform);
+        newPoint.position = position;
+
+        return newPoint;
     }
 
     private void CheckXSides()

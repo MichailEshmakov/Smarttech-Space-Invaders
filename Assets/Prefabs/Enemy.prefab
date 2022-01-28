@@ -183,8 +183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac63f8889bf8bf345a0fa9f884b6f9f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mover: {fileID: 2737792627157290083}
   _weapon: {fileID: 2737792627157290093}
+  _health: {fileID: 2737792627157290090}
 --- !u!114 &2737792627157290083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,10 +278,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da49925632ad0e4498e68d31a9b477b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leftExtremePoint: {fileID: 0}
-  _rightExtremePoint: {fileID: 0}
-  _topExtremePoint: {fileID: 0}
-  _bottomExtremePoint: {fileID: 0}
+  _leftExtremePoint: {fileID: 2737792628373871464}
+  _rightExtremePoint: {fileID: 2737792628932850458}
+  _topExtremePoint: {fileID: 2737792627651388881}
+  _bottomExtremePoint: {fileID: 2737792628787410302}
 --- !u!1 &2737792627651388880
 GameObject:
   m_ObjectHideFlags: 0

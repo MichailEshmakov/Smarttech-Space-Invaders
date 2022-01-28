@@ -261,22 +261,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _topExtremePoint
-      value: 
-      objectReference: {fileID: 2069854980}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _leftExtremePoint
-      value: 
-      objectReference: {fileID: 1291782094}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _rightExtremePoint
-      value: 
-      objectReference: {fileID: 39795793}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _bottomExtremePoint
-      value: 
-      objectReference: {fileID: 1661010543}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
 --- !u!4 &126971752 stripped
@@ -426,22 +410,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _topExtremePoint
-      value: 
-      objectReference: {fileID: 2069854980}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _leftExtremePoint
-      value: 
-      objectReference: {fileID: 1291782094}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _rightExtremePoint
-      value: 
-      objectReference: {fileID: 39795793}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _bottomExtremePoint
-      value: 
-      objectReference: {fileID: 1661010543}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
 --- !u!4 &474742807 stripped
@@ -504,22 +472,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _topExtremePoint
-      value: 
-      objectReference: {fileID: 2069854980}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _leftExtremePoint
-      value: 
-      objectReference: {fileID: 1291782094}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _rightExtremePoint
-      value: 
-      objectReference: {fileID: 39795793}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _bottomExtremePoint
-      value: 
-      objectReference: {fileID: 1661010543}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
 --- !u!4 &484406475 stripped
@@ -1114,22 +1066,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _topExtremePoint
-      value: 
-      objectReference: {fileID: 2069854980}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _leftExtremePoint
-      value: 
-      objectReference: {fileID: 1291782094}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _rightExtremePoint
-      value: 
-      objectReference: {fileID: 39795793}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _bottomExtremePoint
-      value: 
-      objectReference: {fileID: 1661010543}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
 --- !u!4 &1052655267 stripped
@@ -1192,22 +1128,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _topExtremePoint
-      value: 
-      objectReference: {fileID: 2069854980}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _leftExtremePoint
-      value: 
-      objectReference: {fileID: 1291782094}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _rightExtremePoint
-      value: 
-      objectReference: {fileID: 39795793}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _bottomExtremePoint
-      value: 
-      objectReference: {fileID: 1661010543}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
 --- !u!4 &1208017353 stripped
@@ -1270,22 +1190,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _topExtremePoint
-      value: 
-      objectReference: {fileID: 2069854980}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _leftExtremePoint
-      value: 
-      objectReference: {fileID: 1291782094}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _rightExtremePoint
-      value: 
-      objectReference: {fileID: 39795793}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _bottomExtremePoint
-      value: 
-      objectReference: {fileID: 1661010543}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
 --- !u!4 &1268024781 stripped
@@ -1409,22 +1313,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _topExtremePoint
-      value: 
-      objectReference: {fileID: 2069854980}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _leftExtremePoint
-      value: 
-      objectReference: {fileID: 1291782094}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _rightExtremePoint
-      value: 
-      objectReference: {fileID: 39795793}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _bottomExtremePoint
-      value: 
-      objectReference: {fileID: 1661010543}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
 --- !u!4 &1586192544 stripped
@@ -1577,22 +1465,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _topExtremePoint
-      value: 
-      objectReference: {fileID: 2069854980}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _leftExtremePoint
-      value: 
-      objectReference: {fileID: 1291782094}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _rightExtremePoint
-      value: 
-      objectReference: {fileID: 39795793}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _bottomExtremePoint
-      value: 
-      objectReference: {fileID: 1661010543}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
 --- !u!4 &1885060424 stripped
@@ -1640,6 +1512,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2089346392}
   - component: {fileID: 2089346391}
+  - component: {fileID: 2089346394}
+  - component: {fileID: 2089346393}
   m_Layer: 0
   m_Name: EnemyRow
   m_TagString: Untagged
@@ -1682,6 +1556,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2089346393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089346390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da49925632ad0e4498e68d31a9b477b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _leftExtremePoint: {fileID: 0}
+  _rightExtremePoint: {fileID: 0}
+  _topExtremePoint: {fileID: 0}
+  _bottomExtremePoint: {fileID: 0}
+--- !u!114 &2089346394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089346390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcab54043626a8d4da93b05d014049fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 0
 --- !u!1001 &2737792627797371536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1737,21 +1640,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _topExtremePoint
-      value: 
-      objectReference: {fileID: 2069854980}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _leftExtremePoint
-      value: 
-      objectReference: {fileID: 1291782094}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _rightExtremePoint
-      value: 
-      objectReference: {fileID: 39795793}
-    - target: {fileID: 2737792627157290094, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
-      propertyPath: _bottomExtremePoint
-      value: 
-      objectReference: {fileID: 1661010543}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
