@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Mover))]
-[RequireComponent(typeof(Gabarits))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Weapon _weapon;
     [SerializeField] private Health _health;
+    [SerializeField] private Gabarits _gabarits;
 
-    private Mover _mover;
-    private Gabarits _gabarits;
-
-    public event UnityAction Dead;
+    public event UnityAction<Enemy> Dead;
+    public event UnityAction BorderCollided;
+    public event UnityAction EnemyCollided;
 
     public float LeftExtremeCoordinate => _gabarits.LeftExtremeCoordinate;
     public float RightExtremeCoordinate => _gabarits.RightExtremeCoordinate;
@@ -28,8 +26,8 @@ public class Enemy : MonoBehaviour
         if (_weapon == null)
             _weapon = GetComponent<Weapon>();
 
-        _mover = GetComponent<Mover>();
-        _gabarits = GetComponent<Gabarits>();
+        if (_gabarits == null)
+            _gabarits = GetComponentInChildren<Gabarits>();
     }
 
     private void OnEnable()
@@ -44,14 +42,22 @@ public class Enemy : MonoBehaviour
         _health.Dead -= OnDead;
     }
 
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        _mover.Move(Vector2.down);
+        if (collision.gameObject.TryGetComponent(out SideBorder sideBorder))
+        {
+            BorderCollided?.Invoke();
+        }
+
+        if (collision.gameObject.TryGetComponent(out Enemy enemy))
+        {
+            EnemyCollided?.Invoke();
+        }
     }
 
     private void OnDead()
     {
-        Dead?.Invoke();
+        Dead?.Invoke(this);
     }
 
     private void OnWeaponPrepared()

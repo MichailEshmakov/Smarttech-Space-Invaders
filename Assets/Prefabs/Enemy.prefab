@@ -43,13 +43,13 @@ GameObject:
   - component: {fileID: 2737792627157290087}
   - component: {fileID: 2737792627157290089}
   - component: {fileID: 2737792627157290084}
-  - component: {fileID: 2737792627157290083}
   - component: {fileID: 2737792627157290088}
   - component: {fileID: 2737792627157290090}
   - component: {fileID: 2737792627157290091}
   - component: {fileID: 2737792627157290092}
   - component: {fileID: 2737792627157290093}
   - component: {fileID: 2737792627157290094}
+  - component: {fileID: 1541745851405061479}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -185,19 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weapon: {fileID: 2737792627157290093}
   _health: {fileID: 2737792627157290090}
---- !u!114 &2737792627157290083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2737792627157290082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcab54043626a8d4da93b05d014049fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 0
+  _gabarits: {fileID: 2737792627157290094}
 --- !u!114 &2737792627157290088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +270,19 @@ MonoBehaviour:
   _rightExtremePoint: {fileID: 2737792628932850458}
   _topExtremePoint: {fileID: 2737792627651388881}
   _bottomExtremePoint: {fileID: 2737792628787410302}
+--- !u!114 &1541745851405061479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2737792627157290082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a3bce14456b6ad4288c242d593f2a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitCollider: {fileID: 2737792627157290091}
 --- !u!1 &2737792627651388880
 GameObject:
   m_ObjectHideFlags: 0

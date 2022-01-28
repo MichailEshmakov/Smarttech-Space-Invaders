@@ -2,22 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Gabarits))]
 public class MovmentLimiter : MonoBehaviour
 {
     [SerializeField] private Borders _borders;
-
-    private Gabarits _gabarits;
+    [SerializeField] private Gabarits _gabarits;
 
     private void OnValidate()
     {
         if (_borders == null)
             _borders = FindObjectOfType<Borders>();
-    }
 
-    private void Awake()
-    {
-        _gabarits = GetComponent<Gabarits>();
+        if (_gabarits == null)
+            _gabarits = GetComponentInChildren<Gabarits>();
     }
 
     private void LateUpdate()
