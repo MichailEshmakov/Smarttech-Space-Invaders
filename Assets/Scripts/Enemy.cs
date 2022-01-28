@@ -7,16 +7,10 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Weapon _weapon;
     [SerializeField] private Health _health;
-    [SerializeField] private Gabarits _gabarits;
 
     public event UnityAction<Enemy> Dead;
     public event UnityAction BorderCollided;
     public event UnityAction EnemyCollided;
-
-    public float LeftExtremeCoordinate => _gabarits.LeftExtremeCoordinate;
-    public float RightExtremeCoordinate => _gabarits.RightExtremeCoordinate;
-    public float TopExtremeCoordinate => _gabarits.TopExtremeCoordinate;
-    public float BottomExtremeCoordinate => _gabarits.BottomExtremeCoordinate;
 
     private void OnValidate()
     {
@@ -25,9 +19,6 @@ public class Enemy : MonoBehaviour
 
         if (_weapon == null)
             _weapon = GetComponent<Weapon>();
-
-        if (_gabarits == null)
-            _gabarits = GetComponentInChildren<Gabarits>();
     }
 
     private void OnEnable()

@@ -6,11 +6,9 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Mover))]
-[RequireComponent(typeof(Gabarits))]
 public class EnemySubRow : MonoBehaviour
 {
     private Mover _mover;
-    private Gabarits _gabarits;
     private List<Enemy> _enemies;
     private Vector2 _movingDirection;
     private Enemy _rightEnemy;
@@ -45,7 +43,6 @@ public class EnemySubRow : MonoBehaviour
         _mover.SetSpeed(speed);
         _enemies = new List<Enemy>(enemies);
         _movingDirection = movingDirection;
-        InitGabarits();
         SubscribeOnEnemies(enemies);
 
         foreach (Enemy enemy in _enemies)
@@ -80,8 +77,6 @@ public class EnemySubRow : MonoBehaviour
         UnsubscribeOnEnemy(deadEnemy);
         if (_enemies.Count == 0)
             Destroy(gameObject);
-        else
-            InitGabarits();
     }
 
     private void OnMiddleEnemyDead(Enemy deadEnemy)
@@ -145,20 +140,5 @@ public class EnemySubRow : MonoBehaviour
     private void ChangeDirection()
     {
         _movingDirection *= -1;
-    }
-
-    private void InitGabarits()
-    {
-        _gabarits = GetComponent<Gabarits>();
-        _enemies = _enemies.OrderByDescending(enemy => enemy.transform.position.x).ToList();
-        _leftEnemy = _enemies.LastOrDefault();
-        _rightEnemy = _enemies.FirstOrDefault();
-
-        float leftestExtremePoint = _leftEnemy.LeftExtremeCoordinate;
-        float rightestExtremePoint = _rightEnemy.RightExtremeCoordinate;
-
-        float toppestExtremePoint = _enemies.Select(enemy => enemy.TopExtremeCoordinate).Max();
-        float bottomestExtremePoint = _enemies.Select(enemy => enemy.BottomExtremeCoordinate).Min();
-        _gabarits.Init(leftestExtremePoint, rightestExtremePoint, toppestExtremePoint, bottomestExtremePoint);
     }
 }
