@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyRow : MonoBehaviour
 {
     [SerializeField] private List<Enemy> _enemies;
-    [SerializeField] private float _speed;
-    [SerializeField] private float _resultSpeed;
+    [SerializeField] private float _horisontalSpeed;
+    [SerializeField] private float _resultHorisintalSpeed;
 
     private List<EnemySubRow> _subRows = new List<EnemySubRow>();
     private float _speedStepPerDeath;
 
+    public event UnityAction<EnemyRow> Destroyed;
+
     private void Awake()
     {
         CreateSubRow(_enemies, Vector2.left);
-        _speedStepPerDeath = (_resultSpeed - _speed) / (_enemies.Count - 1);
+        _speedStepPerDeath = (_resultHorisintalSpeed - _horisontalSpeed) / (_enemies.Count - 1);
 
         foreach (Enemy enemy in _enemies)
         {
@@ -33,6 +36,16 @@ public class EnemyRow : MonoBehaviour
         {
             UnsubscribeOnSubRow(subRow);
         }
+
+        Destroyed?.Invoke(this);
+    }
+
+    public void SetFirstness()
+    {
+        foreach (Enemy enemy in _enemies)
+        {
+            enemy.SetFirstRow();
+        }
     }
 
     private void OnEnemyDead(Enemy deadEnemy)
@@ -43,11 +56,11 @@ public class EnemyRow : MonoBehaviour
         if (_enemies.Count == 0)
             Destroy(gameObject);
 
-        _speed += _speedStepPerDeath;
+        _horisontalSpeed += _speedStepPerDeath;
 
         foreach (EnemySubRow subRow in _subRows)
         {
-            subRow.SetSpeed(_speed);
+            subRow.SetHorisontalSpeed(_horisontalSpeed);
         }
     }
 
@@ -61,7 +74,7 @@ public class EnemyRow : MonoBehaviour
         EnemySubRow newSubRow = new GameObject(nameof(EnemySubRow)).AddComponent<EnemySubRow>();
         newSubRow.transform.parent = transform;
         newSubRow.transform.position = transform.position;
-        newSubRow.Init(_speed, enemies, Vector2.left);
+        newSubRow.Init(_horisontalSpeed, enemies, Vector2.left);
         SubscribeOnSubRow(newSubRow);
         _subRows.Add(newSubRow);
     }

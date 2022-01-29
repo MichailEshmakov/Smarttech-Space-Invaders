@@ -185,7 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weapon: {fileID: 2737792627157290093}
   _health: {fileID: 2737792627157290090}
-  _gabarits: {fileID: 2737792627157290094}
+  _maxStartShootingDelay: 2
 --- !u!114 &2737792627157290088
 MonoBehaviour:
   m_ObjectHideFlags: 0

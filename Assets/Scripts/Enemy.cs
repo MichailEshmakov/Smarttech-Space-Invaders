@@ -7,6 +7,10 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Weapon _weapon;
     [SerializeField] private Health _health;
+    [SerializeField] private float _maxStartShootingDelay;
+
+    private bool _isFirstRow = false;
+    private Coroutine StartShootingWaiting;
 
     public event UnityAction<Enemy> Dead;
     public event UnityAction BorderCollided;
@@ -23,7 +27,9 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
-        _weapon.ToFirePrepared += OnWeaponPrepared;
+        if (_isFirstRow && StartShootingWaiting == null)
+            StartCoroutine(WaitShootingStart());
+
         _health.Dead += OnDead;
     }
 
@@ -46,6 +52,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void SetFirstRow()
+    {
+        _isFirstRow = true;
+
+        if (enabled && StartShootingWaiting == null)
+            StartCoroutine(WaitShootingStart());
+    }
+
     private void OnDead()
     {
         Dead?.Invoke(this);
@@ -54,5 +68,18 @@ public class Enemy : MonoBehaviour
     private void OnWeaponPrepared()
     {
         _weapon.TryFire();
+    }
+
+    private void StartFire()
+    {
+        _weapon.TryFire();
+        _weapon.ToFirePrepared += OnWeaponPrepared;
+    }
+
+    private IEnumerator WaitShootingStart()
+    {
+        yield return new WaitForSeconds(Random.Range(0, _maxStartShootingDelay));
+        StartFire();
+        StartShootingWaiting = null;
     }
 }

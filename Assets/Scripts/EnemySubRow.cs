@@ -16,18 +16,14 @@ public class EnemySubRow : MonoBehaviour
     public event UnityAction<IReadOnlyList<Enemy>, Vector2> Divided;
     public event UnityAction<EnemySubRow> Destroyed;
 
-    private void OnEnable()
+    private void Awake()
     {
         SubscribeOnEnemies(_enemies);
     }
 
-    private void OnDisable()
-    {
-        UnsubscribeOnEnemies(_enemies);
-    }
-
     private void OnDestroy()
     {
+        UnsubscribeOnEnemies(_enemies);
         Destroyed?.Invoke(this);
     }
 
@@ -45,9 +41,9 @@ public class EnemySubRow : MonoBehaviour
         }
     }
 
-    public void SetSpeed(float newSpeed)
+    public void SetHorisontalSpeed(float value)
     {
-        _mover.SetSpeed(newSpeed);
+        _mover.SetSpeed(value);
     }
 
     private void OnEnemyDead(Enemy deadEnemy)
