@@ -186,6 +186,7 @@ MonoBehaviour:
   _weapon: {fileID: 2737792627157290093}
   _health: {fileID: 2737792627157290090}
   _maxStartShootingDelay: 2
+  _score: 10
 --- !u!114 &2737792627157290088
 MonoBehaviour:
   m_ObjectHideFlags: 0

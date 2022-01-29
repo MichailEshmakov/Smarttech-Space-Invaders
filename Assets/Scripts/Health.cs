@@ -10,13 +10,18 @@ public class Health : MonoBehaviour
 
     private bool _isDead;
 
+    public int Value => _value;
+
     public event UnityAction Dead;
+    public event UnityAction ValueChanged;
 
     public void TakeDamage(int damage)
     {
         if (damage < 0)
             Debug.LogError(nameof(damage) + " is less, than zero");
-        _value -= damage;
+
+        _value = (int)Mathf.MoveTowards(_value, 0, damage);
+        ValueChanged?.Invoke();
 
         if (_isDead == false && _value <= 0)
         {
