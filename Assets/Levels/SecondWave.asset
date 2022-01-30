@@ -39,6 +39,6 @@ MonoBehaviour:
     - {fileID: 2737792627157290084, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
     - {fileID: 2737792627157290084, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
     _betweenEnemiesDistance: 0.5
-  _distanceBetweenRows: 4
+  _distanceBetweenRows: 3
   _maxWidth: 18
   _speed: 0.5
