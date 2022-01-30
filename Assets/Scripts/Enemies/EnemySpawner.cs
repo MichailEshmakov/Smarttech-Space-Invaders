@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private List<EnemyWaveData> _waves;
+    [SerializeField] private Transform _enemyPositionLimit;
 
     private int _currentWaveIndex = -1;
 
@@ -26,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
     {
         EnemyWave newWawe = new GameObject(nameof(EnemyWave)).AddComponent<EnemyWave>();
         newWawe.transform.position = transform.position;
-        newWawe.Init(waveData);
+        newWawe.Init(waveData, _enemyPositionLimit.position.y);
         newWawe.Destroyed += OnWaweDestroyed;
         newWawe.EnemyDead += OnEnemyDead;
     }

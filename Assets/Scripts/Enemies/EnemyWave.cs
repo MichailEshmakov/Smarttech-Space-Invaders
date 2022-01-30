@@ -28,10 +28,10 @@ public class EnemyWave : MonoBehaviour
         Destroyed?.Invoke(this);
     }
 
-    public void Init(EnemyWaveData waveData)
+    public void Init(EnemyWaveData waveData, float positonLimit)
     {
         InitMover(waveData.Speed);
-        InitRows(waveData.Rows, waveData.DistanceBetweenRows);
+        InitRows(waveData.Rows, waveData.DistanceBetweenRows, positonLimit);
         _rows[0].SetFirstness();
     }
 
@@ -43,7 +43,7 @@ public class EnemyWave : MonoBehaviour
         _mover.SetSpeed(speed);
     }
 
-    private void InitRows(IReadOnlyList<EnemyRowData> rowDatas, float distanceBetweenRows)
+    private void InitRows(IReadOnlyList<EnemyRowData> rowDatas, float distanceBetweenRows, float positonLimit)
     {
         for (int i = 0; i < rowDatas.Count; i++)
         {
@@ -52,6 +52,8 @@ public class EnemyWave : MonoBehaviour
             newRow.transform.SetParent(transform);
             newRow.Init(rowDatas[i]);
             _rows.Add(newRow);
+            CoordinateMovementLimiter limiter = newRow.gameObject.AddComponent<CoordinateMovementLimiter>();
+            limiter.Init(CoordinateLitera.y, false, positonLimit);// TODO: Реализовать ограничение с учетом габаритов и нескольких рядов
 
             newRow.Destroyed += OnRowDestroyed;
             newRow.EnemyDead += OnEnemyDead;
