@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Score : MonoBehaviour
 {
-    [SerializeField] private EnemyWave _enemyWave;
+    [SerializeField] private EnemySpawner _enemySpawner;
     
     private int _value;
 
@@ -15,12 +15,12 @@ public class Score : MonoBehaviour
 
     private void OnEnable()
     {
-        _enemyWave.EnemyDead += OnEnemyDead;
+        _enemySpawner.EnemyDead += OnEnemyDead;
     }
 
     private void OnDisable()
     {
-        _enemyWave.EnemyDead -= OnEnemyDead;
+        _enemySpawner.EnemyDead -= OnEnemyDead;
     }
 
     private void OnEnemyDead(Enemy deadEnemy)

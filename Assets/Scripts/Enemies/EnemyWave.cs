@@ -1,32 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class EnemyWave : MonoBehaviour
 {
-    [SerializeField] private Mover _mover;
-    [SerializeField] private List<EnemyRow> _rows;
+    private Mover _mover;
+    private List<EnemyRow> _rows = new List<EnemyRow>();
 
-    public event UnityAction Destroyed;
+    public event UnityAction<EnemyWave> Destroyed;
     public event UnityAction<Enemy> EnemyDead;
-
-    private void OnValidate()
-    {
-        if (_mover == null)
-            _mover = GetComponent<Mover>();
-    }
-
-    private void Awake()
-    {
-        foreach (EnemyRow row in _rows)
-        {
-            row.Destroyed += OnRowDestroyed;
-            row.EnemyDead += OnEnemyDead;
-        }
-
-        _rows[0].SetFirstness();
-    }
 
     private void Update()
     {
@@ -41,7 +25,37 @@ public class EnemyWave : MonoBehaviour
             row.EnemyDead -= OnEnemyDead;
         }
 
-        Destroyed?.Invoke();
+        Destroyed?.Invoke(this);
+    }
+
+    public void Init(EnemyWaveData waveData)
+    {
+        InitMover(waveData.Speed);
+        InitRows(waveData.Rows, waveData.DistanceBetweenRows);
+        _rows[0].SetFirstness();
+    }
+
+    private void InitMover(float speed)
+    {
+        if (_mover == null)
+            _mover = gameObject.AddComponent<Mover>();
+
+        _mover.SetSpeed(speed);
+    }
+
+    private void InitRows(IReadOnlyList<EnemyRowData> rowDatas, float distanceBetweenRows)
+    {
+        for (int i = 0; i < rowDatas.Count; i++)
+        {
+            EnemyRow newRow = new GameObject(nameof(EnemyRow)).AddComponent<EnemyRow>();
+            newRow.transform.position = transform.position + Vector3.up * i * distanceBetweenRows;
+            newRow.transform.SetParent(transform);
+            newRow.Init(rowDatas[i]);
+            _rows.Add(newRow);
+
+            newRow.Destroyed += OnRowDestroyed;
+            newRow.EnemyDead += OnEnemyDead;
+        }
     }
 
     private void OnEnemyDead(Enemy deadEnemy)

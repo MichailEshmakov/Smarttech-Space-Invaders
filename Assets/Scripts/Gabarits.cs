@@ -14,10 +14,10 @@ public class Gabarits : MonoBehaviour
     private float _topHeight;
     private float _bottomHeight;
 
-    public float LeftWidth => _leftWidth;
-    public float RightWidth => _rightWidth;
-    public float TopHeight => _topHeight;
-    public float BottomHeight => _bottomHeight;
+    public float LeftWidth => transform.position.x - _leftExtremePoint.position.x;
+    public float RightWidth => _rightExtremePoint.position.x - transform.position.x;
+    public float TopHeight => _topExtremePoint.position.y - transform.position.y;
+    public float BottomHeight => transform.position.y - _bottomExtremePoint.position.y;
 
     public float LeftExtremeCoordinate => _leftExtremePoint.position.x;
     public float RightExtremeCoordinate => _rightExtremePoint.position.x;
@@ -39,7 +39,6 @@ public class Gabarits : MonoBehaviour
         {
             CheckXSides();
             CheckYSides();
-            SetSizes();
         }
     }
 
@@ -99,13 +98,5 @@ public class Gabarits : MonoBehaviour
     private void LogEggorOfWrongPosition(string sideName)
     {
         Debug.LogError($"Wrong position of {sideName}");
-    }
-
-    private void SetSizes()
-    {
-        _leftWidth = transform.position.x - _leftExtremePoint.position.x;
-        _rightWidth = _rightExtremePoint.position.x - transform.position.x;
-        _topHeight = _topExtremePoint.position.y - transform.position.y;
-        _bottomHeight = transform.position.y - _bottomExtremePoint.position.y;
     }
 }

@@ -9,11 +9,14 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Health _health;
     [SerializeField] private float _maxStartShootingDelay;
     [SerializeField] private int _score;
+    [SerializeField] private Gabarits _gabarits;
 
     private bool _isFirstRow = false;
     private Coroutine StartShootingWaiting;
 
     public int Score => _score;
+    public float LeftWidth => _gabarits.LeftWidth;
+    public float RightWidth => _gabarits.RightWidth;
 
     public event UnityAction<Enemy> Dead;
     public event UnityAction BorderCollided;
@@ -26,6 +29,9 @@ public class Enemy : MonoBehaviour
 
         if (_weapon == null)
             _weapon = GetComponent<Weapon>();
+
+        if (_gabarits == null)
+            _gabarits = GetComponent<Gabarits>();
     }
 
     private void OnEnable()

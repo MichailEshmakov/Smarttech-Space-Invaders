@@ -9,17 +9,12 @@ using UnityEngine.Events;
 public class EnemySubRow : MonoBehaviour
 {
     private EnemySubRowMover _mover;
-    private List<Enemy> _enemies;
+    private List<Enemy> _enemies = new List<Enemy>();
     private Enemy _rightEnemy;
     private Enemy _leftEnemy;
 
     public event UnityAction<IReadOnlyList<Enemy>, Vector2> Divided;
     public event UnityAction<EnemySubRow> Destroyed;
-
-    private void Awake()
-    {
-        SubscribeOnEnemies(_enemies);
-    }
 
     private void OnDestroy()
     {
@@ -31,7 +26,7 @@ public class EnemySubRow : MonoBehaviour
     {
         _mover = GetComponent<EnemySubRowMover>();
         _mover.Init(speed, movingDirection);
-        _enemies = new List<Enemy>(enemies);
+        _enemies = enemies.ToList();
 
         SubscribeOnEnemies(enemies);
 

@@ -5,26 +5,14 @@ using UnityEngine.Events;
 
 public class EnemyRow : MonoBehaviour
 {
-    [SerializeField] private List<Enemy> _enemies;
-    [SerializeField] private float _horisontalSpeed;
-    [SerializeField] private float _resultHorisintalSpeed;
-
+    private List<Enemy> _enemies = new List<Enemy>();
+    private float _horisontalSpeed;
+    private float _resultHorisintalSpeed;
     private List<EnemySubRow> _subRows = new List<EnemySubRow>();
     private float _speedStepPerDeath;
 
     public event UnityAction<EnemyRow> Destroyed;
     public event UnityAction<Enemy> EnemyDead;
-
-    private void Awake()
-    {
-        CreateSubRow(_enemies, Vector2.left);
-        _speedStepPerDeath = (_resultHorisintalSpeed - _horisontalSpeed) / (_enemies.Count - 1);
-
-        foreach (Enemy enemy in _enemies)
-        {
-            enemy.Dead += OnEnemyDead;
-        }
-    }
 
     private void OnDestroy()
     {
@@ -41,11 +29,35 @@ public class EnemyRow : MonoBehaviour
         Destroyed?.Invoke(this);
     }
 
+    public void Init(EnemyRowData rowData)
+    {
+        _horisontalSpeed = rowData.HorisontalSpeed;
+        _resultHorisintalSpeed = rowData.ResultHorisontalSpeed;
+        InstantiateEnemies(rowData.Enemies, rowData.ComputeWidth(), rowData.BetweenEnemiesDistance);
+        CreateSubRow(_enemies, Vector2.left);
+        _speedStepPerDeath = (_resultHorisintalSpeed - _horisontalSpeed) / (_enemies.Count - 1);
+    }
+
     public void SetFirstness()
     {
         foreach (Enemy enemy in _enemies)
         {
             enemy.SetFirstRow();
+        }
+    }
+
+    private void InstantiateEnemies(IReadOnlyList<Enemy> prefabs, float width, float distanceBetween)
+    {
+        Vector3 nextEnemyPosition = transform.position + Vector3.left * (width / 2);
+
+        foreach (Enemy enemyPrefab in prefabs)
+        {
+            nextEnemyPosition += Vector3.right * enemyPrefab.LeftWidth;
+            Enemy newEnemy = Instantiate(enemyPrefab, transform);
+            newEnemy.transform.position = nextEnemyPosition;
+            nextEnemyPosition += Vector3.right * (enemyPrefab.RightWidth + distanceBetween);
+            newEnemy.Dead += OnEnemyDead;
+            _enemies.Add(newEnemy);
         }
     }
 
