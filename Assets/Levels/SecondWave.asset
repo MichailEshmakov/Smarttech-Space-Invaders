@@ -10,9 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a95b02c0e19fa548a053fdebe8f40bc, type: 3}
-  m_Name: FirstWave
+  m_Name: SecondWave
   m_EditorClassIdentifier: 
   _rows:
+  - _horisontalSpeed: 1
+    _resultHorisontalSpeed: 10
+    _enemies:
+    - {fileID: 2737792627157290084, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
+    - {fileID: 2737792627157290084, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
+    - {fileID: 2737792627157290084, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
+    - {fileID: 2737792627157290084, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
+    - {fileID: 2737792627157290084, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
+    - {fileID: 2737792627157290084, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
+    - {fileID: 2737792627157290084, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
+    - {fileID: 2737792627157290084, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
+    - {fileID: 2737792627157290084, guid: 19b49e9001e5b9a48bf33573b4293490, type: 3}
+    _betweenEnemiesDistance: 0.5
   - _horisontalSpeed: 1
     _resultHorisontalSpeed: 10
     _enemies:

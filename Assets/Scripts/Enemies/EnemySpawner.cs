@@ -10,12 +10,13 @@ public class EnemySpawner : MonoBehaviour
     private int _currentWaveIndex = -1;
 
     public event UnityAction<Enemy> EnemyDead;
+    public event UnityAction WaveDestroyed;
 
     public void StartNextWave()
     {
         _currentWaveIndex++;
 
-        if (_waves.Count >= _currentWaveIndex)
+        if (_currentWaveIndex >= _waves.Count)
             _currentWaveIndex = 0;
 
         InstantiateWave(_waves[_currentWaveIndex]);
@@ -39,5 +40,6 @@ public class EnemySpawner : MonoBehaviour
     {
         destroyedWave.Destroyed -= OnWaweDestroyed;
         destroyedWave.EnemyDead -= OnEnemyDead;
+        WaveDestroyed?.Invoke();
     }
 }
